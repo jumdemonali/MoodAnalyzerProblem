@@ -1,14 +1,24 @@
 package com.bl.moodanalyzer;
 
 public class MoodAnalyser {
-    public String analyseMood(String message) {
-        if (message.toLowerCase().contains("any")) {
-            return "HAPPY";
-        }
-        if (message.toLowerCase().contains("sad")) {
-            return "SAD";
-        } else {
-            return null;
+    public String message="I am in happy Mood";
+    public MoodAnalyser() {
+    }
+
+    public MoodAnalyser(String message) {
+        this.message = message;
+    }
+
+    public String analyseMood() {
+            if (message.toLowerCase().contains("happy")) {
+                return "HAPPY";
+            }
+            if (message.toLowerCase().contains("sad")) {
+                return "SAD";
+            } else {
+                return null;
+            }
         }
     }
-}
+
+
