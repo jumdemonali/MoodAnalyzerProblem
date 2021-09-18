@@ -5,20 +5,28 @@ import org.junit.Assert;
 
 public class MoodAnalyserTest {
 
-    MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy mood");
+
     @Test
     public void whenGivenMessageAbilityToAnalyseAndRespondHappy_shouldReturnTrue() {
-
-        String expectedmessage = "HAPPY";
+        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy Mood");
+            String expectedmessage = "HAPPY";
         String actualmessage = moodAnalyser.analyseMood();
         Assert.assertEquals(expectedmessage, actualmessage);
     }
 
     @Test
     public void whenGivenMessageAbilityToAnalyseAndRespondHappy_shouldReturnFalse() {
-        String expectedmessage = "SAD";
-        String actualmessage = moodAnalyser.analyseMood();
-        Assert.assertEquals(expectedmessage, actualmessage);
+        MoodAnalyser moodAnalyzer = new MoodAnalyser("I am in Sad mood");
+        String actualmessage = moodAnalyzer.analyseMood();
+        Assert.assertEquals("SAD", actualmessage);
     }
+    @Test
+    public void whenGivenNullMessage_shouldThrowException() {
+
+        MoodAnalyser moodAnalyzer = new MoodAnalyser(null);
+        String actualmessage = moodAnalyzer.analyseMood();
+        Assert.assertEquals("Happy", actualmessage);
+   }
+
 }
 
