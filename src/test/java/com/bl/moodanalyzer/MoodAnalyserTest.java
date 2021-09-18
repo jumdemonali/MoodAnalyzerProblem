@@ -8,25 +8,50 @@ public class MoodAnalyserTest {
 
     @Test
     public void whenGivenMessageAbilityToAnalyseAndRespondHappy_shouldReturnTrue() {
-        MoodAnalyser moodAnalyser = new MoodAnalyser("I am in happy Mood");
-            String expectedmessage = "HAPPY";
-        String actualmessage = moodAnalyser.analyseMood();
-        Assert.assertEquals(expectedmessage, actualmessage);
+        MoodAnalyser moodAnalyzer = new MoodAnalyser("I am in Any mood");
+        String actualMessage = null;
+        try {
+            actualMessage = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
+        Assert.assertEquals("HAPPY", actualMessage);
     }
 
     @Test
-    public void whenGivenMessageAbilityToAnalyseAndRespondHappy_shouldReturnFalse() {
+    public void whenGivenMessageAbilityToAnalyseAndRespondSad_shouldReturnTrue() {
         MoodAnalyser moodAnalyzer = new MoodAnalyser("I am in Sad mood");
-        String actualmessage = moodAnalyzer.analyseMood();
+        String actualmessage = null;
+        try {
+            actualmessage = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            e.printStackTrace();
+        }
         Assert.assertEquals("SAD", actualmessage);
     }
+
     @Test
     public void whenGivenNullMessage_shouldThrowException() {
 
         MoodAnalyser moodAnalyzer = new MoodAnalyser(null);
-        String actualmessage = moodAnalyzer.analyseMood();
-        Assert.assertEquals("Happy", actualmessage);
+        String actualMessage = null;
+        try {
+            actualMessage = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            System.out.println(e);
+        }
+    }
+    @Test
+    public void whenGivenEmptyMessage_shouldThrowException() {
+
+        MoodAnalyser moodAnalyzer = new MoodAnalyser("");
+        String actualMessage = " ";
+        try {
+            actualMessage = moodAnalyzer.analyseMood();
+        } catch (MoodAnalysisException e) {
+            System.out.println(e);
+        }
+    }
    }
 
-}
 
